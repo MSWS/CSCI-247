@@ -1,9 +1,16 @@
 \documentclass{article}
 
 \usepackage{enumitem}
-\usepackage{amsmath}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+
+\geometry{tmargin=1in, bmargin=1in, lmargin=1in, rmargin=1in}
 
 \begin{document}
+
+\title{CSCI 247}
+\author{Isaac Boaz}
+\maketitle
 
 \section*{Question 1}
 Given a floating-point format with a \(k\)-bit exponent and an \(n\) bit fraction, write formulas for the exponent \(E\), the significand \(M\), the fraction \(f\), and the value \(V\) for the quantities that follow. In addition, describe the bit representation.
@@ -68,7 +75,26 @@ Given a floating-point format with a \(k\)-bit exponent and an \(n\) bit fractio
         Sign & Exp & Mantissa \\
         0 & 1010 & 111 \\
     \end{tabular} \\
+    \pagebreak
 
+    \item \underline{The reciprocal of the smallest positive normalized value} \\ [\baselineskip]
+    In order to find the reciprocal of any number, we can simply "flip" the numerator and denominator. This can be achieved in floating point representation by multiplying the exponent by -1. \\
+    The smallest possible value given \(k\) exponent bits and \(M\) fraction bits is when:
+    \begin{itemize}[label=\(\square\)]
+        \item \(M = 0\), \(s = 0\)
+        \item \(Exp\) is the biggest positive value multiplied by \(-1\)
+    \end{itemize}
+    \begin{enumerate}[label=\arabic*.]
+        \item Set \(M =0\), \(s = 0\)
+    \end{enumerate}
+    % 2. The smallest possible value given k exponent bits and M fraction bits is:
+    %  - When the mantissa is 0
+    %  - M = 0
+    %  - When the exponent is as small as possible, multiplied by -1
+    %  - Exp - Bias = E
+    %  - Bias = 2^(k - 1) - 1
+    %  - We can't have an Exp of 0 (special case), so set it to 1:
+    %  - E = (1 - Bias) * -1
 \end{enumerate}
 
 \end{document}
