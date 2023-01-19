@@ -86,15 +86,22 @@ Given a floating-point format with a \(k\)-bit exponent and an \(n\) bit fractio
     \end{itemize}
     \begin{enumerate}[label=\arabic*.]
         \item Set \(M =0\), \(s = 0\)
+        \item Calculate \(E = Exp - Bias\) with \(Exp = 1\)
+        \item One example where \(k = 5, M = 4\)
+        \begin{align*}
+            Bias &= 2^{k-1} - 1 =\ 2^{5-1} - 1 &= 15 \\
+            E &= (1 - Bias) =\ (1 - 15) \cdot -1 &= 14 \\
+            Exp &= E + Bias =\ (14 + 15) &= 29_{10} = 11101_2 \\
+            f &=& 0_2
+        \end{align*}
+        With a final bit representation of
+        \begin{tabular}{r|c|l}
+            Sign & Exp & Mantissa \\
+            0 & 11101 & 000 \\
+        \end{tabular} \\
+        Which equals \(16384\)
     \end{enumerate}
-    % 2. The smallest possible value given k exponent bits and M fraction bits is:
-    %  - When the mantissa is 0
-    %  - M = 0
-    %  - When the exponent is as small as possible, multiplied by -1
-    %  - Exp - Bias = E
-    %  - Bias = 2^(k - 1) - 1
-    %  - We can't have an Exp of 0 (special case), so set it to 1:
-    %  - E = (1 - Bias) * -1
+
 \end{enumerate}
 
 \end{document}
